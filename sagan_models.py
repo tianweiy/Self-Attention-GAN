@@ -43,11 +43,11 @@ class Self_Attn_dynamic(nn.Module):
 
         return out
 
-class Generator_dynamic(nn.Module):
+class Generator(nn.Module):
     """Generator."""
 
     def __init__(self, batch_size, image_size=64, z_dim=100, conv_dim=64, attn_feat=[16, 32], upsample=False):
-        super(Generator_dynamic, self).__init__()
+        super(Generator, self).__init__()
         self.imsize = image_size
         layers = []
 
@@ -88,11 +88,11 @@ class Generator_dynamic(nn.Module):
         return out, p1, p2
 
 
-class Discriminator_dynamic(nn.Module):
+class Discriminator(nn.Module):
     """Discriminator, Auxiliary Classifier."""
 
     def __init__(self, batch_size=64, image_size=64, conv_dim=64, attn_feat=[16, 32]):
-        super(Discriminator_dynamic, self).__init__()
+        super(Discriminator, self).__init__()
         self.imsize = image_size
         layers = []
 

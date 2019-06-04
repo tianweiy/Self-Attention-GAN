@@ -170,12 +170,8 @@ class Trainer(object):
             if (step + 1) % self.log_step == 0:
                 elapsed = time.time() - start_time
                 elapsed = str(datetime.timedelta(seconds=elapsed))
-                print("Elapsed [{}], G_step [{}/{}], D_step[{}/{}], d_out_real: {:.4f}, "
-                      " ave_gamma_l3: {:.4f}, ave_gamma_l4: {:.4f}".
-                      format(elapsed, step + 1, self.total_step, (step + 1),
-                             self.total_step , d_loss_real.data[0],
-                             self.G.attn1.gamma.mean().data[0], self.G.attn2.gamma.mean().data[0] ))
-
+		print("Elapsed [{}], G_step [{}/{}], D_step[{}/{}], d_out_real: {:.4f}".format(elapsed, step + 1, self.total_step, (step + 1),
+                      self.total_step , d_loss_real.data[0] ))
             # Sample images
             if (step + 1) % self.sample_step == 0:
                 fake_images,_,_= self.G(fixed_z)

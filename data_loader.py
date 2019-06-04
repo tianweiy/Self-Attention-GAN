@@ -37,7 +37,7 @@ class Data_Loader():
 
     def load_cifar(self):
         transforms = self.transform(True, True, True, False)
-        dataset = dsets.CIFAR10("./data", train=True, download=True, transforms=transforms)
+        dataset = dsets.CIFAR10("./data", train=True, download=True, transform=transforms)
         return dataset
 
     def loader(self):
