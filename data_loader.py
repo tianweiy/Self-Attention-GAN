@@ -35,17 +35,23 @@ class Data_Loader():
         dataset = dsets.ImageFolder(self.path+'/CelebA', transform=transforms)
         return dataset
 
+    def load_cifar(self):
+        transforms = self.transform(True, True, True, False)
+        dataset = dsets.CIFAR10("./data", train=True, download=True, transforms=transforms)
+        return dataset
 
     def loader(self):
         if self.dataset == 'lsun':
             dataset = self.load_lsun()
         elif self.dataset == 'celeb':
             dataset = self.load_celeb()
+        elif self.dataset == 'cifar':
+            dataset = self.load_cifar()
 
         loader = torch.utils.data.DataLoader(dataset=dataset,
                                               batch_size=self.batch,
                                               shuffle=self.shuf,
-                                              num_workers=2,
+                                              num_workers=8,
                                               drop_last=True)
         return loader
 
